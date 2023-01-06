@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Initialize'){
             steps{
-                echo "PATH = %MAVEN_HOME%\bin:%PATH%"
+                echo "PATH = ${MAVEN_HOME}/bin:${PATH}"
                 echo "MAVEN_HOME = /Maven/apache-maven-3.8.7"
             }
         }
