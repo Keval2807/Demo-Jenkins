@@ -1,6 +1,8 @@
 pipeline {
     agent any
     environment {
+        dockerfile = "C:/ProgramData/Jenkins/.jenkins/workspace/demo-pipeline-task-2/my-app/"
+        pomfile = "C:/ProgramData/Jenkins/.jenkins/workspace/demo-pipeline-task-2/my-app/"
         registry = "KevalK/jenkins-assignment"
         registryCredential = 'dockerhub_id'
         dockerImage = ''
@@ -18,7 +20,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir("C:/ProgramData/Jenkins/.jenkins/workspace/demo-pipeline-task-2/my-app/") {
+                dir(pomfile) {
                 bat 'mvn -B clean package'
                 }
             }
@@ -26,7 +28,7 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('SonarQube 1.0') {
-                    dir("C:/ProgramData/Jenkins/.jenkins/workspace/demo-pipeline-task-2/my-app/") {
+                    dir(pomfile) {
                         bat 'mvn clean package sonar:sonar' 
                     }
                 }
@@ -44,7 +46,7 @@ pipeline {
         stage('Building our image') {
             steps{
                 script {
-                    dockerImage = docker.build registry + "-$BUILD_NUMBER"
+                    dockerImage = docker.build dockerfile
                 }
             }
         }
@@ -57,7 +59,7 @@ pipeline {
         }
         stage('Cleaning up') {
             steps{
-                    bat "docker rmi $registry-$BUILD_NUMBER"
+                    bat "docker rmi dockerfile
             }
         }
     }
