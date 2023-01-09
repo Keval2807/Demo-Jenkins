@@ -23,6 +23,7 @@ pipeline {
                 withSonarQubeEnv('SonarQube 1.0') {
                     dir("C:/ProgramData/Jenkins/.jenkins/workspace/demo-pipeline-task-2/my-app/") {
                         bat 'mvn clean package sonar:sonar'
+                        -D sonar.login = sqa_97eea0a9e438963b470bf2d84640bf4885cc6ff5
                     }
                 }
             }
