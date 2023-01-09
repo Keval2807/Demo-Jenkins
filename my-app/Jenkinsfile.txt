@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         pomfile = "C:/ProgramData/Jenkins/.jenkins/workspace/demo-pipeline-task-2/my-app/"
-        registry = "KevalK/jenkins-assignment"
+        registry = "kevalk/jenkins-assignment"
         registryCredential = 'dockerhub_id'
         dockerImage = ''
     }
