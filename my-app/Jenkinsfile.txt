@@ -1,7 +1,6 @@
 pipeline {
     agent any
     environment {
-        dockerfile = "C:/ProgramData/Jenkins/.jenkins/workspace/demo-pipeline-task-2/my-app/"
         pomfile = "C:/ProgramData/Jenkins/.jenkins/workspace/demo-pipeline-task-2/my-app/"
         registry = "KevalK/jenkins-assignment"
         registryCredential = 'dockerhub_id'
@@ -46,7 +45,7 @@ pipeline {
         stage('Building our image') {
             steps{
                 script {
-                    dockerImage = docker.build dockerfile
+                    dockerImage = docker.build C:/ProgramData/Jenkins/.jenkins/workspace/demo-pipeline-task-2/my-app/Dockerfile
                 }
             }
         }
