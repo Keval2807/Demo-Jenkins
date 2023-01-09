@@ -45,7 +45,7 @@ pipeline {
         stage('Building our image') {
             steps{
                 script {
-                    dockerImage = docker.build C:/ProgramData/Jenkins/.jenkins/workspace/demo-pipeline-task-2/my-app/Dockerfile
+                    dockerImage = docker.build pomfile
                 }
             }
         }
@@ -58,7 +58,7 @@ pipeline {
         }
         stage('Cleaning up') {
             steps{
-                    bat "docker rmi dockerfile"
+                    bat "docker rmi pomfile"
             }
         }
     }
