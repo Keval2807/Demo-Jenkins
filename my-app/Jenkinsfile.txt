@@ -56,11 +56,11 @@ pipeline {
                 }
             }
         }
-        stage('Cleaning up') {
-            steps{
-                    bat "docker rmi $registry"
-            }
-        }
+        // stage('Cleaning up') {
+        //    steps{
+        //            bat "docker rmi $registry"
+        //    }
+        // }
     }
     post {
        always {
