@@ -59,7 +59,7 @@ pipeline {
         }
         stage('Cleaning up') {
             steps{
-                    bat "docker rmi dockerfile
+                    bat "docker rmi dockerfile"
             }
         }
     }
